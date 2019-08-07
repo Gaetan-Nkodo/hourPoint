@@ -8,20 +8,8 @@
           <div class="card card-login card-hidden">
             <div class="card-header card-header-rose text-center">
               <h4 class="card-title">Log in</h4>
-              <div class="social-line">
-                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                  <i class="fa fa-facebook-square"></i>
-                </a>
-                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                  <i class="fa fa-twitter"></i>
-                </a>
-                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                  <i class="fa fa-google-plus"></i>
-                </a>
-              </div>
             </div>
             <div class="card-body ">
-              <p class="card-description text-center">Or Be Classical</p>
               <span class="bmd-form-group">
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -36,16 +24,6 @@
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
-                      <i class="material-icons">email</i>
-                    </span>
-                  </div>
-                  <input type="email" class="form-control" placeholder="Email...">
-                </div>
-              </span>
-              <span class="bmd-form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
                       <i class="material-icons">lock_outline</i>
                     </span>
                   </div>
@@ -54,7 +32,7 @@
               </span>
             </div>
             <div class="card-footer justify-content-center">
-              <a href="#pablo" class="btn btn-rose btn-link btn-lg">Lets Go</a>
+              <a [routerLink]="['/dashboard']" class="btn btn-rose btn-link btn-lg">Lets Go</a>
             </div>
           </div>
         </form>
@@ -65,22 +43,22 @@
         <nav class="pull-left">
           <ul>
             <li>
-              <a href="https://www.creative-tim.com">
-                Creative Tim
+              <a href="https://www.test.pse-consulting.com/">
+                PSE-Consulting
               </a>
             </li>
             <li>
-              <a href="http://presentation.creative-tim.com">
+              <a href="https://www.test.pse-consulting.com/">
                 About Us
               </a>
             </li>
             <li>
-              <a href="http://blog.creative-tim.com">
+              <a href="https://www.test.pse-consulting.com/">
                 Blog
               </a>
             </li>
             <li>
-              <a href="https://www.creative-tim.com/license">
+              <a href="https://www.test.pse-consulting.com/">
                 Licenses
               </a>
             </li>
@@ -88,8 +66,8 @@
         </nav>
         <div class="copyright pull-right">
           &copy;
-            {{test | date: 'yyyy'}}, made with <i class="material-icons">favorite</i> by
-          <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+            {{year | date: 'yyyy'}}, made with <i class="material-icons">favorite</i> by
+          <a href="https://www.test.pse-consulting.com/" target="_blank">PSE-Consulting</a> for a better Managment.
         </div>
       </div>
     </footer>

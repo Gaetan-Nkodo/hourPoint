@@ -8,7 +8,7 @@ declare var $: any;
 })
 
 export class LoginComponent implements OnInit, OnDestroy {
-    test: Date = new Date();
+    year: Date = new Date();
     private toggleButton: any;
     private sidebarVisible: boolean;
     private nativeElement: Node;

@@ -6,7 +6,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 
 export class LockComponent implements OnInit, OnDestroy {
-    test: Date = new Date();
+    year: Date = new Date();
     ngOnInit() {
       const body = document.getElementsByTagName('body')[0];
       body.classList.add('lock-page');
