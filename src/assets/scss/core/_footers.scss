@@ -3,13 +3,16 @@
     text-align: center;
     display: -webkit-flex; /* Safari */ /* Safari 6.1+ */
     display: flex;
+    background-color:rgba(2, 2, 2, 0.384) !important;;
+    
 
-    ul{
+     ul{
         margin-bottom: 0;
         padding: 0;
         list-style: none;
 
         li{
+
             display: inline-block;
 
             a{
@@ -21,7 +24,7 @@
                 border-radius: $border-radius-base;
                 text-decoration: none;
                 position: relative;
-                display: block;
+                display: block;                
 
                 &:hover{
                     text-decoration: none;
@@ -72,17 +75,19 @@
         line-height: 20px;
         margin-left: -15px;
 
-        &:hover,
+        &:hover,        
         &:focus{
             color: $black-color;
         }
     }
     .copyright{
         padding: 15px 0;
+        color: rgba(255, 254, 254, 0.863) !important;
         .material-icons{
             font-size: 18px;
             position: relative;
             top: 3px;
+            color: rgb(197, 195, 195) !important;
         }
 
     }

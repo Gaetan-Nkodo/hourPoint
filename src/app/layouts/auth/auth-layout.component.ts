@@ -2,7 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-layout',
-  templateUrl: './auth-layout.component.html'
+  templateUrl: './auth-layout.component.html',
+  styleUrls: ['./auth-layout.component.scss']
 })
 export class AuthLayoutComponent implements OnInit {
   private toggleButton: any;

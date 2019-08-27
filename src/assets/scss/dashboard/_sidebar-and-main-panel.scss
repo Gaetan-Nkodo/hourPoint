@@ -43,7 +43,7 @@
     }
 
     &[data-background-color="red"]{
-        background-color: #e53935;
+        background-color: #d30a07 !important;
     }
 
     .sidebar-wrapper{
@@ -227,6 +227,7 @@
         left: 0;
         background-size: cover;
         background-position: center center;
+      
 
         &:after{
             position: absolute;

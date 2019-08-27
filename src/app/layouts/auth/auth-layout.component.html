@@ -1,10 +1,11 @@
 <nav class="navbar navbar-expand-lg bg-primary navbar-transparent navbar-absolute" color-on-scroll="500">
   <div class="container">
     <div class="navbar-wrapper">
-      <a class="navbar-brand" [routerLink]="['/dashboard']">Hour Point Login Page</a>
+      <a class="navbar-brand" [routerLink]="['/dashboard']" style="font-family: cursive; font-size: 30px; color: rgb(13, 228, 138) ">PSE-HourPoint</a>
     </div>
     <button mat-raised-button class="navbar-toggler" type="button" (click)="sidebarToggle()">
       <span class="sr-only">Toggle navigation</span>
+      <span class="navbar-toggler-icon icon-bar"></span>
       <span class="navbar-toggler-icon icon-bar"></span>
       <span class="navbar-toggler-icon icon-bar"></span>
       <span class="navbar-toggler-icon icon-bar"></span>
@@ -18,10 +19,10 @@
         </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/pages/lock']">
-            <i class="material-icons">lock_open</i> Lock
+            <i class="material-icons">lock_open</i> admin
           </a>
-        </li>
-      </ul>
+        </li>     
+       </ul>
     </div>
   </div>
 </nav>

@@ -1,7 +1,7 @@
 
 
 <div class="wrapper wrapper-full-page">
-  <div class="page-header lock-page header-filter" style="background-image: url('../../assets/img/lock.jpg'); background-size: cover; background-position: top center;">
+  <div class="page-header lock-page header-filter" style="background-image: url('../../assets/img/login2.jpg'); background-size: cover; background-position: top center;">
     <!--   you can change the color of the filter page using: data-color="blue | green | orange | red | purple" -->
     <div class="container">
       <div class="col-md-4 ml-auto mr-auto">
@@ -9,19 +9,19 @@
           <div class="card-header ">
             <div class="card-avatar">
               <a href="#pablo">
-                <img class="img" src="../../assets/img/faces/avatar.jpg">
+                <img class="img" src="../../assets/img/faces/avatar2.jpg">
               </a>
             </div>
           </div>
           <div class="card-body ">
-            <h4 class="card-title">Tania Andrew</h4>
+            <h4 class="card-title" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">bienvenue</h4>
             <div class="form-group">
-              <label for="exampleInput1" class="bmd-label-floating">Enter Password</label>
-              <input type="email" class="form-control" id="exampleInput1">
+              <label class="bmd-label-floating" style="color: rgb(24, 23, 23)">mot de passe</label>
+              <input type="password" class="form-control" placeholder="mot de passe">
             </div>
           </div>
-          <div class="card-footer justify-content-center">
-            <a href="#pablo" class="btn btn-rose btn-round">Unlock</a>
+          <div class="text" style="text-align: center">
+            <a [routerLink]="['/dashboard']" class="btn btn-primary btn-round mt-4">connexion</a>
           </div>
         </div>
       </div>

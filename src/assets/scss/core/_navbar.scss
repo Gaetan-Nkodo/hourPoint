@@ -3,7 +3,8 @@
     border-radius: $border-radius-base;
     padding: 0.625rem 0;
     margin-bottom: 20px;
-    @include navbar-colors($white-color, $navbar-color);
+    @include navbar-colors($white-color, rgb(238, 234, 234) !important);
+    border-bottom: rgb(248, 237, 239) double 1px !important;
 
     &.fixed-top{
         border-radius: 0;
@@ -12,7 +13,7 @@
     .navbar-nav{
         .nav-item .nav-link{
             position: relative;
-            color: inherit;
+            color: rgb(250, 241, 241) !important;
             padding: $padding-general-x;
             font-weight: $font-weight-default;
             font-size: $mdb-btn-font-size-base;
@@ -152,7 +153,7 @@
     }
 
     &.navbar-transparent{
-        background-color: transparent !important;
+        background-color: rgba(68, 67, 67, 0.712) !important;
         box-shadow: none;
         padding-top: 25px;
 
@@ -164,7 +165,7 @@
     border: 1px solid #FFF;
     right: 10px;
     font-size: 9px;
-    background: #f44336;
+    background: #0a0a0a8a !important;
     color: #FFFFFF;
     min-width: 20px;
     padding: 0px 5px;

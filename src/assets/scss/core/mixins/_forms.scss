@@ -271,6 +271,9 @@
   .bmd-label-placeholder {
     //@debug "top: #{$label-as-placeholder-top}";
     top: $label-placeholder-top - 1.7; // place the floating label to look like a placeholder with input padding
+    color: rgba(252, 248, 248, 0.63) !important;
+    font-size: 15px !important;
+    font-style: inherit !important;
   }
 
   // floating focused/filled will look like static

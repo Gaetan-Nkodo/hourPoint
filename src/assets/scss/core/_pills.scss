@@ -18,18 +18,18 @@
             font-weight: $font-weight-bold;
             min-width: 100px;
             text-align: center;
-            color: $pills-color;
+            color:black !important;
             transition: all .3s;
             border-radius: 30px;
             padding: 10px 15px;
 
             &:hover{
-                background-color: rgba(200, 200, 200, 0.2);
+                background-color: rgba(106, 236, 230, 0.068);
             }
 
             &.active{
                 color: $white-color;
-                background-color: $brand-primary;
+                background-color: rgba(134, 132, 132, 0.637) !important;
                 @include shadow-big-color($brand-primary);
             }
         }

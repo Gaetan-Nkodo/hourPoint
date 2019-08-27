@@ -26,7 +26,7 @@ export const ROUTES: RouteInfo[] = [{
         title: 'Dashboard',
         type: 'link',
         icontype: 'dashboard'
-    },{
+},/*{
         path: '/components',
         title: 'Components',
         type: 'sub',
@@ -41,7 +41,7 @@ export const ROUTES: RouteInfo[] = [{
             {path: 'icons', title: 'Icons', ab:'I'},
             {path: 'typography', title: 'Typography', ab:'T'}
         ]
-    },{
+    }*\,/*{
         path: '/forms',
         title: 'Forms',
         type: 'sub',
@@ -53,7 +53,7 @@ export const ROUTES: RouteInfo[] = [{
             {path: 'validation', title: 'Validation Forms', ab:'VF'},
             {path: 'wizard', title: 'Wizard', ab:'W'}
         ]
-    },{
+    }*\,/*{
         path: '/tables',
         title: 'Tables',
         type: 'sub',
@@ -64,7 +64,7 @@ export const ROUTES: RouteInfo[] = [{
             {path: 'extended', title: 'Extended Tables', ab:'ET'},
             {path: 'datatables.net', title: 'Datatables.net', ab:'DT'}
         ]
-    },{
+    }*\,/*{
         path: '/maps',
         title: 'Maps',
         type: 'sub',
@@ -75,24 +75,24 @@ export const ROUTES: RouteInfo[] = [{
             {path: 'fullscreen', title: 'Full Screen Map', ab:'FSM'},
             {path: 'vector', title: 'Vector Map', ab:'VM'}
         ]
-    },{
+    }*/,/*{
         path: '/widgets',
         title: 'Widgets',
         type: 'link',
         icontype: 'widgets'
 
-    },{
+    }*/,/*{
         path: '/charts',
         title: 'Charts',
         type: 'link',
         icontype: 'timeline'
 
-    },{
+    }*/,/*{
         path: '/calendar',
         title: 'Calendar',
         type: 'link',
         icontype: 'date_range'
-    },{
+    }*/,{
         path: '/pages',
         title: 'Pages',
         type: 'sub',
