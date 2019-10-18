@@ -3,8 +3,8 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { UserComponent } from './user.component';
-import { UserRoutes } from './user.routing';
+import { UserPageComponent } from './userpage.component';
+import { UserRoutes } from './userpage.routing';
 
 @NgModule({
     imports: [
@@ -12,7 +12,7 @@ import { UserRoutes } from './user.routing';
         RouterModule.forChild(UserRoutes),
         FormsModule
     ],
-    declarations: [UserComponent]
+    declarations: [UserPageComponent]
 })
 
-export class UserModule {}
+export class UserPageModule {}

@@ -41,16 +41,19 @@ import {
 
 import { AppComponent } from './app.component';
 
-import { SidebarModule } from './sidebar/sidebar.module';
-import { FooterModule } from './shared/footer/footer.module';
-import { NavbarModule} from './shared/navbar/navbar.module';
-import { FixedpluginModule} from './shared/fixedplugin/fixedplugin.module';
+import { FooterComponent } from './shared/footer/footer.component';
+import { NavbarComponent} from './shared/navbar/navbar.component';
+import { FixedpluginComponent} from './shared/fixedplugin/fixedplugin.component';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 
 import { AppRoutes } from './app.routing';
 import { AdminPipe } from './admin.pipe';
 import { ActivitesPipe } from './activites.pipe';
+import { UserComponent } from './layouts/user/user.component';
+import { SidebarUserComponent } from './sidebarUser/sidebarUser.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+
 
 @NgModule({
   exports: [
@@ -85,7 +88,7 @@ import { ActivitesPipe } from './activites.pipe';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule
-  ],  
+  ]  
 })
 export class MaterialModule {}
 
@@ -97,16 +100,18 @@ export class MaterialModule {}
         RouterModule.forRoot(AppRoutes),
         HttpModule,
         MaterialModule,
-        MatNativeDateModule,
-        SidebarModule,
-        NavbarModule,
-        FooterModule,
-        FixedpluginModule
+        MatNativeDateModule
     ],
     declarations: [
         AppComponent,
         AdminLayoutComponent,
-        AuthLayoutComponent
+        AuthLayoutComponent,
+        SidebarComponent,
+        SidebarUserComponent,
+        NavbarComponent,
+        FooterComponent,
+        FixedpluginComponent,
+        UserComponent
     ],
     bootstrap:    [ AppComponent ]
 })
