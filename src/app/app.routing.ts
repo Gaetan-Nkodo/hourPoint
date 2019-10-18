@@ -27,7 +27,10 @@ export const AppRoutes: Routes = [
   },    {
        path: '',
        loadChildren: './userpage/userpage.module#UserPageModule'
-  }
+  },    {
+    path: '',
+    loadChildren: './userpageconsult/userpageconsult.module#UserPageConsultModule'
+}
 ]}, {
       path: '',
       component: AuthLayoutComponent,
