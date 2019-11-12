@@ -7,9 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PagesRoutes } from './pages.routing';
 
-import { RegisterComponent } from './register/register.component';
 import { LockComponent } from './lock/lock.component';
 import { LoginComponent } from './login/login.component';
+import { DatabaseService } from '../shared/database.service';
 
 @NgModule({
   imports: [
@@ -20,9 +20,9 @@ import { LoginComponent } from './login/login.component';
   ],
   declarations: [
     LoginComponent,
-    RegisterComponent,
     LockComponent
-  ]
+  ],
+  providers:  [DatabaseService]
 })
 
 export class PagesModule {}

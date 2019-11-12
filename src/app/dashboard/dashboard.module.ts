@@ -7,6 +7,7 @@ import { MaterialModule } from '../app.module';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
+import { AuthGuard } from 'app/shared/auth.guard';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { DashboardRoutes } from './dashboard.routing';
         MdModule,
         MaterialModule
     ],
-    declarations: [DashboardComponent]
+    declarations: [DashboardComponent],
+    providers: [AuthGuard]
 })
 
 export class DashboardModule {}

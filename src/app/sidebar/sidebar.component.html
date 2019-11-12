@@ -27,21 +27,27 @@
                     <div class="collapse" id="collapseExample">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a href="javascript:void(0)" class="nav-link">
-                                    <span class="sidebar-mini">MP</span>
-                                    <span class="sidebar-normal">Mon profil</span>
+                              <a routerLink="/adminconsult" class="nav-link">
+                                  <span class="sidebar-mini">MP</span>
+                                  <span class="sidebar-normal">Mon profil</span>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                                <a routerLink="/admin" class="nav-link">
+                                  <span class="sidebar-mini">EP</span>
+                                  <span class="sidebar-normal">modifier mon profil</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="javascript:void(0)" class="nav-link">
-                                    <span class="sidebar-mini">EP</span>
-                                    <span class="sidebar-normal">modifier mon profil</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                              <a [routerLink]="['/pages/register']" class="nav-link">
+                              <a [routerLink]="['/register']" class="nav-link">
                                 <span class="sidebar-mini">CC</span>
                                 <span class="sidebar-normal">Creer compte</span>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a [routerLink]="['/dashboard']" class="nav-link">
+                                <span class="sidebar-mini">DB</span>
+                                <span class="sidebar-normal">Dashboard</span>
                               </a>
                             </li>
                             <li class="nav-item">
@@ -54,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="isMobileMenu()">
+            <!-- <div *ngIf="isMobileMenu()">
               <form class="navbar-form">
                 <span class="bmd-form-group"><div class="input-group no-border">
                   <input type="text" value="" class="form-control" placeholder="Search...">
@@ -99,5 +105,5 @@
                 </li>
               </ul>
             </div>
- 
+  -->
         </div>

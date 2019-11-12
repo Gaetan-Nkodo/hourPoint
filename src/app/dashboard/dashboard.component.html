@@ -14,106 +14,110 @@
                         compte
                       </a>
                     </li>                    
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                       <a class="nav-link" data-toggle="tab" href="#link3" role="tablist">
                         AJOUT
                       </a>
-                    </li>
+                    </li> -->
                   </ul>
                   <div class="tab-content tab-space">
                     <div class="tab-pane active" id="link1">
                       <table class="table table-hover" style="text-align: center; border: 1px solid black"> 
-                            <thead class="text" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">                
-                              <tr style="border: 1px solid black; border-bottom: 1px solid black">
-                                <th>date</th>
-                                <th>heure arrivée</th>
-                                <th>heure départ</th>
-                                <th>extra</th>
-                                <th>total</th>
-                                <th>actions</th>
-                              </tr>
-                            </thead>                  
-                              <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>
-                                  <button class="nav-link" type="button" class="btn-icon" >
+                        <thead class="text" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">                
+                          <tr style="border: 1px solid black; border-bottom: 1px solid black">
+                            <th>Nom d'utilisateur</th>
+                            <th>Adresse mail</th>
+                            <th>Profil</th>
+                        <!--<th>heure arrivée</th>
+                            <th>heure départ</th>
+                            <th>extra</th>
+                            <th>total</th>-->
+                            <th>Actions</th>
+                          </tr>
+                        </thead>                  
+                          <tr *ngFor="let user of tab; let i=index">
+                            <td>{{user.userName}}</td>
+                            <td>{{user.adresse}}</td>
+                            <td>{{user.profil}}</td>
+                            <!--<td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>-->
+                            <td>
+                              <button class="nav-link" type="button" class="btn-icon" >
+                                <i class="material-icons">edit</i>                    
+                              </button>
+                              <button class="nav-link" type="button" class="btn-icon" (click)="deleteUser(user.id)" >
+                                  <i class="material-icons">delete</i>                    
+                                </button>                 
+                            </td>                                    
+                          </tr>
+                      <!--<tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>
+                                <button class="nav-link" type="button" class="btn-icon" >
                                     <i class="material-icons">edit</i>                    
                                   </button>
                                   <button class="nav-link" type="button" class="btn-icon" >
                                       <i class="material-icons">delete</i>                    
-                                    </button>                 
-                                </td>                                    
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>
-                                    <button class="nav-link" type="button" class="btn-icon" >
-                                        <i class="material-icons">edit</i>                    
-                                      </button>
-                                      <button class="nav-link" type="button" class="btn-icon" >
-                                          <i class="material-icons">delete</i>                    
-                                        </button>
-                              </td>
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>
-                                    <button class="nav-link" type="button" class="btn-icon" >
-                                        <i class="material-icons">edit</i>                    
-                                      </button>
-                                      <button class="nav-link" type="button" class="btn-icon" >
-                                          <i class="material-icons">delete</i>                    
-                                        </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>
-                                    <button class="nav-link" type="button" class="btn-icon" >
-                                        <i class="material-icons">edit</i>                    
-                                      </button>
-                                      <button class="nav-link" type="button" class="btn-icon" >
-                                          <i class="material-icons">delete</i>                    
-                                        </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>
-                                    <button class="nav-link" type="button" class="btn-icon" >
-                                      <i class="material-icons">edit</i>                    
                                     </button>
-                                    <button class="nav-link" type="button" class="btn-icon" >
-                                        <i class="material-icons">delete</i>                    
+                          </td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>
+                                <button class="nav-link" type="button" class="btn-icon" >
+                                    <i class="material-icons">edit</i>                    
+                                  </button>
+                                  <button class="nav-link" type="button" class="btn-icon" >
+                                      <i class="material-icons">delete</i>                    
                                     </button>
-                                </td>
-                              </tr>
-                            </table>
-                    <div class="text" style="text-align: center">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>
+                                <button class="nav-link" type="button" class="btn-icon" >
+                                    <i class="material-icons">edit</i>                    
+                                  </button>
+                                  <button class="nav-link" type="button" class="btn-icon" >
+                                      <i class="material-icons">delete</i>                    
+                                    </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>
+                                <button class="nav-link" type="button" class="btn-icon" >
+                                  <i class="material-icons">edit</i>                    
+                                </button>
+                                <button class="nav-link" type="button" class="btn-icon" >
+                                    <i class="material-icons">delete</i>                    
+                                </button>
+                            </td>
+                          </tr>-->
+                        </table>
+                    <!-- <div class="text" style="text-align: center">
                       <a [routerLink]="['/dashboard']" class="btn btn-primary btn-round mt-4" style="background-color: rgba(49, 49, 48, 0.918)">enregistrer</a>
+                    </div>-->
                     </div>
-                    </div>                    
-                    <div class="tab-pane" id="link3">                        
+                    <!-- <div class="tab-pane" id="link3">                        
                         <div class="col-md-10">
                           <div class="card-body ">
                             <span class="bmd-form-group">
@@ -151,7 +155,7 @@
                           <a [routerLink]="['/dashboard']" class="btn btn-primary btn-round mt-4" style="background-color: rgba(49, 49, 48, 0.918)">ajouter</a>
                         </div>                                                                    
                       </div>                         
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>

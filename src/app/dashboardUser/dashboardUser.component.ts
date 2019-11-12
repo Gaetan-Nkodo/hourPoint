@@ -3,15 +3,21 @@ import { TableData } from '../md/md-table/md-table.component';
 import { LegendItem, ChartType } from '../md/md-chart/md-chart.component';
 
 import * as Chartist from 'chartist';
+import { ActiveUserService } from 'app/shared/activeUser.service';
+import { DatabaseService } from 'app/shared/database.service';
+import { ProviderAst } from '@angular/compiler';
 
 declare const $: any;
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboardUser.component.html'
+  templateUrl: './dashboardUser.component.html',
+  providers:[ActiveUserService,DatabaseService]
 })
 export class DashboardUserComponent implements OnInit, AfterViewInit {
   // constructor(private navbarTitleService: NavbarTitleService, private notificationService: NotificationService) { }
+  constructor(private activeUser:ActiveUserService,private data:DatabaseService){}
+  
   public tableData: TableData;
   startAnimationForLineChart(chart: any) {
       let seq: any, delays: any, durations: any;

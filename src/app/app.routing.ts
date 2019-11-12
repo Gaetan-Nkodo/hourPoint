@@ -16,7 +16,16 @@ export const AppRoutes: Routes = [
           {
         path: '',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
-    }
+    },    {
+      path: '',
+      loadChildren: './register/register.module#RegisterModule'
+  },      {
+       path: '',
+       loadChildren: './adminpage/adminpage.module#AdminPageModule'
+  },      {
+    path: '',
+    loadChildren: './adminpageconsult/adminpageconsult.module#AdminPageConsultModule'
+}
   ]}, {
     path: '',
     component: UserComponent,

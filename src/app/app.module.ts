@@ -53,6 +53,8 @@ import { ActivitesPipe } from './activites.pipe';
 import { UserComponent } from './layouts/user/user.component';
 import { SidebarUserComponent } from './sidebarUser/sidebarUser.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ActiveUserService } from './shared/activeUser.service';
+import { TestService } from './shared/test.service';
 
 
 @NgModule({
@@ -113,6 +115,7 @@ export class MaterialModule {}
         FixedpluginComponent,
         UserComponent
     ],
+    providers:[ActiveUserService,TestService],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
