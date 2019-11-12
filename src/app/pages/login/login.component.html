@@ -4,7 +4,7 @@
     <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
     <div class="container">
       <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto">
-        <form class="form" method="" action="">
+        <form #userlogin = "ngForm" (ngSubmit) = "database(userlogin.value)" class="form" method="" action="">
           <div class="box" style="background:rgba(14, 13, 13, 0.651); border-radius: 20px; box-shadow: 0 15px 30px rgba(44, 44, 44, 0.699)">
             <div class="text text-center text-header-green background:red">
               <h2 class="card-title" style="font-style: inherit; color: #fff">log in</h2>
@@ -17,7 +17,7 @@
                        <i class="material-icons" style="color: #fff">face</i>
                     </span>
                   </div>                
-                  <input type="text" style="color: white" class="form-control" placeholder="nom d'utilisateur ou pseudo">
+                  <input name="name" type="text" style="color: white" class="form-control" placeholder="nom d'utilisateur ou pseudo" ngModel>
                 </div>
               </span>
               <span class="bmd-form-group">
@@ -27,7 +27,7 @@
                       <i class="material-icons"  style="color: #fff">lock_outline</i>
                     </span>
                   </div>
-                  <input type="password" style="color: white" class="form-control" placeholder="mot de passe">
+                  <input name="password" type="password" style="color: white" class="form-control" placeholder="mot de passe" ngModel>
                 </div>
                 <div class="text" style="text-align: right">
                     <div class="stats">
@@ -38,14 +38,15 @@
               </span>
             </div>
             <div class="text" style="text-align: center">
-              <a [routerLink]="['/dashboard']" class="btn btn-primary btn-round mt-4">connexion</a>
+              <!-- <a [routerLink]="['/dashboard']" class="btn btn-primary btn-round mt-4">connexion</a> -->
+              <input type="submit" value="connexion"class="btn btn-primary btn-round mt-4">
             </div>
           </div>
-        </form>        
+        </form>
       </div>
-      <div class="text" style="text-align: center">
+      <!-- <div class="text" style="text-align: center">
           <a [routerLink]="['/pages/register']" class="text pull-right" style="color: rgb(255, 255, 254); background-color: rgba(36, 35, 34, 0.747)">cliquer ici pour créér votre compte</a>
-        </div>
+        </div> -->
     </div>
     <footer class="footer " style="background-color: rgba(21, 165, 122, 0.719)">
       <div class="container">

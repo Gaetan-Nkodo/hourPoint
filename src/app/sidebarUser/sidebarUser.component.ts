@@ -43,11 +43,11 @@ export const ROUTES: RouteInfo[] = [{
     }
 ];
 @Component({
-    selector: 'app-sidebar-cmp',
-    templateUrl: 'sidebar.component.html',
+    selector: 'app-sidebarUser-cmp',
+    templateUrl: 'sidebarUser.component.html',
 })
 
-export class SidebarComponent implements OnInit {
+export class SidebarUserComponent implements OnInit {
     public menuItems: any[];
 
     isMobileMenu() {

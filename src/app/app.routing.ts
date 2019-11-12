@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
+import {UserComponent} from './layouts/user/user.component'
 
 export const AppRoutes: Routes = [
     {
@@ -15,35 +16,31 @@ export const AppRoutes: Routes = [
           {
         path: '',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
-    }, {
-        path: 'components',
-        loadChildren: './components/components.module#ComponentsModule'
-    }, {
-        path: 'forms',
-        loadChildren: './forms/forms.module#Forms'
-    }, {
-        path: 'tables',
-        loadChildren: './tables/tables.module#TablesModule'
-    }, {
-        path: 'maps',
-        loadChildren: './maps/maps.module#MapsModule'
-    }, {
-        path: 'widgets',
-        loadChildren: './widgets/widgets.module#WidgetsModule'
-    }, {
-        path: 'charts',
-        loadChildren: './charts/charts.module#ChartsModule'
-    }, {
-        path: 'calendar',
-        loadChildren: './calendar/calendar.module#CalendarModule'
-    }, {
-        path: '',
-        loadChildren: './userpage/user.module#UserModule'
-    }, {
-        path: '',
-        loadChildren: './timeline/timeline.module#TimelineModule'
-    }
+    },    {
+      path: '',
+      loadChildren: './register/register.module#RegisterModule'
+  },      {
+       path: '',
+       loadChildren: './adminpage/adminpage.module#AdminPageModule'
+  },      {
+    path: '',
+    loadChildren: './adminpageconsult/adminpageconsult.module#AdminPageConsultModule'
+}
   ]}, {
+    path: '',
+    component: UserComponent,
+    children: [
+        {
+      path: '',
+      loadChildren: './dashboardUser/dashboardUser.module#DashboardUserModule'
+  },    {
+       path: '',
+       loadChildren: './userpage/userpage.module#UserPageModule'
+  },    {
+    path: '',
+    loadChildren: './userpageconsult/userpageconsult.module#UserPageConsultModule'
+}
+]}, {
       path: '',
       component: AuthLayoutComponent,
       children: [{

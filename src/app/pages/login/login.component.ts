@@ -1,11 +1,17 @@
 import { Component, OnInit, ElementRef, OnDestroy } from '@angular/core';
+import { DatabaseService } from '../../shared/database.service';
+import { ActiveUserService } from 'app/shared/activeUser.service';
+import { GlobalService } from 'app/shared/global.service';
+import { TestService } from 'app/shared/test.service';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
 @Component({
     selector: 'app-login-cmp',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    styleUrls: ['./login.component.scss'],
+    providers:[ActiveUserService,DatabaseService,GlobalService]
 })
 
 export class LoginComponent implements OnInit, OnDestroy {
@@ -14,12 +20,59 @@ export class LoginComponent implements OnInit, OnDestroy {
     private sidebarVisible: boolean;
     private nativeElement: Node;
 
-    constructor(private element: ElementRef) {
+    signal:number=0;
+    tab=[];
+    
+
+    constructor(private element: ElementRef,private test:TestService,public router:Router,private data:DatabaseService,private data2:GlobalService,private activeIndex:ActiveUserService) {
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
     }
 
+
+    database(donnee){
+
+        this.signal=0;
+;
+        let index=0;
+    
+        console.log("this.tab",this.tab);
+        
+        for(let i:number=0;i<this.tab.length;i++){
+            if(this.tab[i].userName == donnee.name){
+                if(this.tab[i].password == donnee.password){
+                    this.signal++;
+                    index=i;
+                    this.activeIndex.setActiveUserToLocalStorage(index);
+    
+                }
+            }
+        }  
+
+        if(this.signal!=0){
+            if(this.tab[index].profil === 'admin'){
+                this.test.setLogStatus(true);
+                this.router.navigate(['/dashboard']);
+                
+            }else{
+                this.router.navigate(['/dashboardUser']);
+            }
+        } else {
+            alert("bad login");
+        }
+
+        
+    }
+
     ngOnInit() {
+
+        this.data2.getInfo().subscribe(data=>{
+            this.tab=data;
+            console.log("valLogin",this.tab)
+            });
+
+
+
         var navbar : HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
         const body = document.getElementsByTagName('body')[0];

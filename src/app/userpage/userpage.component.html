@@ -1,0 +1,79 @@
+ <div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-icon card-header-rose">
+            <div class="card-icon">
+              <i class="material-icons">perm_identity</i>
+            </div>
+            <h4 class="card-title">Edit Profile -
+              <small class="category">Complete your profile</small>
+            </h4>
+          </div>
+          <div class="card-body">
+            <form>
+               <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" style="color:black !important">Nom</label>
+                    <input name="nom" type="text" [(ngModel)]="user.name" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" style="color:black !important">Prénom</label>
+                    <input name="prenom" type="email" [(ngModel)]="user.secondName" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating"  style="color:black !important">Numéro de téléphone</label>
+                    <input name="numerotel" type="text" [(ngModel)]="user.tel" class="form-control">
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" style="color:black !important">Email address</label>
+                    <input name="adresse" type="text" [(ngModel)]="user.adresse" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <br>
+              <input type="button" value="Changer Mot de passe" (click)="onClick()">
+              <input *ngIf="annuler" type="button" class="btn btn-rose" value="Annuler" (click)="annuler=false;choice=false;i=0;valid=false">
+                <div *ngIf="choice" class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" style="color:black !important">Mot de passe actuel</label>
+                      <input #mdp (keydown.enter)="keyPressed(mdp.value)" type="password"  class="form-control">
+                    </div>
+                  </div>
+                </div>
+
+              <div *ngIf="valid" class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" style="color:black !important">Nouveau mot de passe</label>
+                    <input #newMdpa type="password" class="form-control" (input)="newMdp1=newMdpa.value">
+                  </div>
+                </div>
+                 <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" style="color:black !important">Confirmer le mot de passe</label>
+                    <input #newMdpb type="password" class="form-control" (input)="newMdp2=newMdpb.value">
+                  </div>
+              </div>
+          </div>
+              <button mat-raised-button type="submit" class="btn btn-rose pull-right" (click)="newMdpTest()">Update Profile</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

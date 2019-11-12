@@ -5,9 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MdModule } from '../md/md.module';
 import { MaterialModule } from '../app.module';
 
-import { DashboardComponent } from './dashboard.component';
+import { DashboardUserComponent } from './dashboardUser.component';
 import { DashboardRoutes } from './dashboard.routing';
-import { AuthGuard } from 'app/shared/auth.guard';
 
 @NgModule({
     imports: [
@@ -17,8 +16,7 @@ import { AuthGuard } from 'app/shared/auth.guard';
         MdModule,
         MaterialModule
     ],
-    declarations: [DashboardComponent],
-    providers: [AuthGuard]
+    declarations: [DashboardUserComponent]
 })
 
-export class DashboardModule {}
+export class DashboardUserModule {}
