@@ -1,9 +1,9 @@
 import { Component, OnInit, ElementRef, OnDestroy } from '@angular/core';
-import { DatabaseService } from '../../shared/database.service';
-import { ActiveUserService } from 'app/shared/activeUser.service';
 import { GlobalService } from 'app/shared/global.service';
-import { TestService } from 'app/shared/test.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import swal from 'sweetalert2';
+import { HTTPStatus } from 'app/shared/auth/auth.interceptors';
 
 declare var $: any;
 
@@ -11,7 +11,7 @@ declare var $: any;
     selector: 'app-login-cmp',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    providers:[ActiveUserService,DatabaseService,GlobalService]
+    providers:[GlobalService]
 })
 
 export class LoginComponent implements OnInit, OnDestroy {
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     tab=[];
     
 
-    constructor(private element: ElementRef,private test:TestService,public router:Router,private data:DatabaseService,private data2:GlobalService,private activeIndex:ActiveUserService) {
+    constructor(private element: ElementRef,public router:Router,private data2:GlobalService,private location:Location,private status:HTTPStatus) {
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
     }
@@ -32,44 +32,90 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     database(donnee){
 
-        this.signal=0;
-;
-        let index=0;
-    
-        console.log("this.tab",this.tab);
-        
-        for(let i:number=0;i<this.tab.length;i++){
-            if(this.tab[i].userName == donnee.name){
-                if(this.tab[i].password == donnee.password){
-                    this.signal++;
-                    index=i;
-                    this.activeIndex.setActiveUserToLocalStorage(index);
-    
+        this.data2.loginHandler(donnee.name,donnee.password).subscribe(
+            res => {
+                console.log('TOKEN',res);
+                this.data2.setTokenToLocalStorage(res['token']);
+                let userPayload = this.data2.getUserPayload();
+                if(userPayload.profil === 'admin'){
+                    this.router.navigate(['/dashboard']);
+                }else{
+                    this.router.navigate(['/userList']);
                 }
-            }
-        }  
+            },
+            err => {
+                //alert(err.error.message);err.error.message
+                this.status.setHttpStatus(false);
+                swal({
+                    title: err.url!=null ? err.error.message : "Erreur de connexion au serveur backend",
+                    type: "warning",
+                    buttonsStyling: false,
+                    confirmButtonClass: 'btn btn-info'
+                }).catch(swal.noop);
 
-        if(this.signal!=0){
-            if(this.tab[index].profil === 'admin'){
-                this.test.setLogStatus(true);
-                this.router.navigate(['/dashboard']);
-                
-            }else{
-                this.router.navigate(['/dashboardUser']);
+
+                console.log("Login error 2",err);
             }
-        } else {
-            alert("bad login");
-        }
+        );
+
+        //  this.signal=0;
+
+        //  let index=0;
+    
+        // console.log("this.tab",this.tab); 
+        
+        // for(let i:number=0;i<this.tab.length;i++){
+        //     if(this.tab[i].userName == donnee.name){
+        //         if(this.tab[i].password == donnee.password){
+        //             this.signal++;
+        //             index=i;
+        //             this.activeIndex.setActiveUserToLocalStorage(index);
+    
+        //         }
+        //     }
+        // }  
+
+        // if(this.signal!=0){
+        //     if(this.tab[index].profil === 'admin'){
+        //         this.test.setLogStatus(true);
+        //         this.router.navigate(['/dashboard']);
+                
+        //     }else{
+        //         this.router.navigate(['/dashboardUser']);
+        //     }
+        // } else {
+        //     alert("bad login");
+        // }
 
         
     }
 
     ngOnInit() {
+    
+        if(this.data2.isLoggedIn()){
+            let userPayload = this.data2.getUserPayload()
+            if(userPayload.profil == "admin"){
+              this.router.navigateByUrl('/dashboard');
+            }else{
+              this.router.navigateByUrl('/userList');
+            }
+        }
 
-        this.data2.getInfo().subscribe(data=>{
-            this.tab=data;
-            console.log("valLogin",this.tab)
-            });
+
+
+        // this.data2.getInfo().subscribe(data=>{
+        //     this.tab=data;
+        //     console.log("valLogin",this.tab)
+        //     });
+
+
+
+
+
+
+
+
+
 
 
 

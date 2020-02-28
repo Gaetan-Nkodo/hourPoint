@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer, ViewChild, ElementRef, Directive } from '@
 import { ROUTES } from '../.././sidebar/sidebar.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { GlobalService } from '../global.service';
 const misc: any = {
     navbar_menu_visible: 0,
     active_collapse: true,
@@ -15,6 +16,21 @@ declare var $: any;
 })
 
 export class NavbarComponent implements OnInit {
+
+
+
+    onClick(){
+        this.data2.deleteTokenFromLocalStorage();
+    }
+
+
+
+
+
+
+
+
+
     private listTitles: any[];
     location: Location;
     private nativeElement: Node;
@@ -23,7 +39,7 @@ export class NavbarComponent implements OnInit {
 
     @ViewChild('app-navbar-cmp') button: any;
 
-    constructor(location: Location, private renderer: Renderer, private element: ElementRef) {
+    constructor(location: Location, private renderer: Renderer, private element: ElementRef,private data2: GlobalService) {
         this.location = location;
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;

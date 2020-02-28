@@ -1,0 +1,56 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header card-header-icon ">
+            <div class="card-icon" style="background-color: rgb(109, 172, 214);">
+              <i class="material-icons">perm_identity</i>
+            </div>
+            <!--<h4 class="card-title">Edit Profile -
+              <small class="category">Complete your profile</small>
+            </h4>-->
+          </div>
+          <div class="card-body">
+            <form #userInfo = "ngForm" (ngSubmit) = "onClick(userInfo.value)" class="form" method="" action="">
+              <div class="row">
+                <div class="text" style="text-align: center">
+                  <input *ngIf="!import" type="button" (click)="exportAsXLSX()" value="exporter le model" style="background-color: rgb(109, 172, 214);" class="btn btn-primary btn-round mt-4">
+                  <input *ngIf="!import" type="button" (click)="importer()" value="Importer la fiche" style="background-color: rgb(109, 172, 214);" class="btn btn-primary btn-round mt-4">
+                  
+                  <form *ngIf="import">
+                    <input style="margin-top: 10px;margin-left: 84px;" type="file" (change)="onFileSelected($event)" />
+                    <button mat-raised-button style="background-color: rgb(109, 172, 214);" class="btn btn-primary pull-right" type="button" (click)="annuler()">annuler</button>
+                    <button mat-raised-button [disabled]="selectedFile==null" style="background-color: rgb(109, 172, 214);" class="btn btn-primary pull-right" type="button" (click)="onUpload()">importer</button>
+                  </form> 
+
+
+                  <!-- <input routerLink="/registerImport" type="button" style="background-color: rgb(109, 172, 214);" class="btn btn-primary btn-round mt-4" value="créer compte par import">
+                  <input type="submit" [disabled]="!userInfo.valid" value="créer mon compte" style="background-color: rgb(109, 172, 214);" class="btn btn-primary btn-round mt-4" > -->
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table *ngIf="tab.length != 0" class="table table-hover" style="text-align: center; border: 1px solid black; background-color: white;"> 
+      <thead class="text" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">                
+        <tr style="border: 1px solid black; border-bottom: 1px solid black">
+          <th>Utilisateurs Non-importé</th>
+          <th>Raison</th>
+
+        </tr>
+      </thead>                  
+        <tr *ngFor="let user of tab">
+          <td>{{user.nomUtilisateur}}</td>
+          <td>{{user.errorMsg}}</td>
+
+        </tr>
+
+      </table>
+  </div>
+</div>
+
+

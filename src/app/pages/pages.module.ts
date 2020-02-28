@@ -9,7 +9,6 @@ import { PagesRoutes } from './pages.routing';
 
 import { LockComponent } from './lock/lock.component';
 import { LoginComponent } from './login/login.component';
-import { DatabaseService } from '../shared/database.service';
 
 @NgModule({
   imports: [
@@ -22,7 +21,7 @@ import { DatabaseService } from '../shared/database.service';
     LoginComponent,
     LockComponent
   ],
-  providers:  [DatabaseService]
+  providers:  []
 })
 
 export class PagesModule {}

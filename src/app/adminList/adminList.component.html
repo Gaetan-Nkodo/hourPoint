@@ -1,0 +1,120 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">      
+      <div class="col-md-12">
+          <div class="col-md-12">
+              <div class="card ">
+                <div class="card-header ">
+                  <h2 class="card-title" style="text-align: right;font-size: 25px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ">LISTE DES EMPLOYES</h2>
+                </div>
+                <div class="card-body ">
+                  <ul class="nav nav-pills nav-pills-warning" role="tablist">
+                    <!-- <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist">
+                        compte(s)
+                      </a>
+                    </li>                     -->
+                    <!-- <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#link3" role="tablist">
+                        AJOUT
+                      </a>
+                    </li> -->
+                    <!--*************************************************************************************-->
+                    <li class="nav-item">
+                      <!--style="margin-left: 403px;"-->
+                    <button *ngIf="!import"  mat-raised-button class="btn btn-rose pull-right" style="background-color: rgb(109, 172, 214);"  type="button" (click)="importer()">importer le fichier hebdomadaire des horaires</button>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                    <button  mat-raised-button class="btn btn-rose pull-right" type="button" (click)="exportAsXLSX()">exporter</button>
+                    </li> -->
+
+                  <form #form *ngIf="import">
+                    <input style="margin-top: 10px;margin-left: 84px;" type="file" (change)="onFileSelected($event)" />
+                    <button mat-raised-button class="btn btn-rose pull-right" style="background-color: rgb(109, 172, 214);"  type="button" (click)="annuler()">annuler</button>
+                    <button mat-raised-button [disabled]="selectedFile==null" class="btn btn-rose pull-right" style="background-color: rgb(109, 172, 214);" type="button" (click)="onUpload()">importer</button>
+                  </form>  
+                    <!--*************************************************************************************-->
+                  </ul>
+                  <div class="tab-content tab-space">
+                    <div class="tab-pane active" id="link1">
+                      <table class="table table-hover" style="text-align: center; border: 1px solid black"> 
+                        <thead class="text" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">                
+                          <tr style="border: 1px solid black; border-bottom: 1px solid black">
+                            <th>Nom d'utilisateur</th>
+                            <th>Adresse mail</th>
+                            <th>Profil</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>                  
+                          <tr *ngFor="let user of tab | paginate: {itemsPerPage:5, currentPage:p}; let i=index">
+                            <td>{{user.userName}}</td>
+                            <td>{{user.adresse}}</td>
+                            <td>{{user.profil}}</td>
+                            <td>
+                              <button routerLink="/adminUserPageConsult" class="nav-link" style="cursor: pointer;" (click)="seeUserProfil(user._id)" type="button" class="btn-icon" >
+                                <i class="material-icons">account_circle</i>                    
+                              </button>
+                              <button routerLink="/dashboardUserAdmin" class="nav-link" style="cursor: pointer;" (click)="seeUserHourInfo(user._id)" type="button" class="btn-icon" >
+                                <i class="material-icons">access_time</i>                    
+                              </button>
+                              <button class="nav-link" type="button" class="btn-icon" style="cursor: pointer;" [disabled]="userPayload._id==user._id" (click)="deleteUser(user._id)" >
+                                  <i class="material-icons">delete</i>                    
+                                </button>                 
+                            </td>                                    
+                          </tr>
+
+                        </table>
+                        <pagination-controls (pageChange)=" p=$event"></pagination-controls>
+                    <!-- <div class="text" style="text-align: center">
+                      <a [routerLink]="['/dashboard']" class="btn btn-primary btn-round mt-4" style="background-color: rgba(49, 49, 48, 0.918)">enregistrer</a>
+                    </div>-->
+                    </div>
+                    <!-- <div class="tab-pane" id="link3">                        
+                        <div class="col-md-10">
+                          <div class="card-body ">
+                            <span class="bmd-form-group">
+                              <div class="row">
+                                <label class="col-sm-2 col-form-label">nom</label>
+                                  <div class="col-sm-10">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput type="text">
+                                    </mat-form-field>
+                                  </div>
+                              </div>                        
+                            </span>
+                            <span class="bmd-form-group">
+                              <div class="row">
+                                <label class="col-sm-2 col-form-label">prénom</label>
+                                  <div class="col-sm-10">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput type="text">
+                                    </mat-form-field>
+                                  </div>
+                              </div>                        
+                            </span>
+                            <span class="bmd-form-group">
+                              <div class="row">
+                                <label class="col-sm-2 col-form-label">nombre d'heures à effectuer</label>
+                                  <div class="col-sm-2">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput type="text">
+                                    </mat-form-field>
+                                  </div>
+                              </div>                        
+                            </span>                      
+                        </div>
+                        <div class="text" style="text-align: center">
+                          <a [routerLink]="['/dashboard']" class="btn btn-primary btn-round mt-4" style="background-color: rgba(49, 49, 48, 0.918)">ajouter</a>
+                        </div>                                                                    
+                      </div>                         
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>                                  
+          </div>                                
+      </div>                    
+    </div>
+</div>
+

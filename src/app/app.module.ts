@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
 import { APP_BASE_HREF } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {
   MatAutocompleteModule,
@@ -53,9 +52,10 @@ import { ActivitesPipe } from './activites.pipe';
 import { UserComponent } from './layouts/user/user.component';
 import { SidebarUserComponent } from './sidebarUser/sidebarUser.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { ActiveUserService } from './shared/activeUser.service';
-import { TestService } from './shared/test.service';
-
+import { GlobalService } from './shared/global.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor, HTTPStatus } from './shared/auth/auth.interceptors';
+import { PageNotFoundComponent } from './pageNotFound/pageNotFound.component';
 
 @NgModule({
   exports: [
@@ -90,7 +90,8 @@ import { TestService } from './shared/test.service';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule
-  ]  
+  ],
+  declarations: []  
 })
 export class MaterialModule {}
 
@@ -99,8 +100,9 @@ export class MaterialModule {}
         CommonModule,
         BrowserAnimationsModule,
         FormsModule,
+        ReactiveFormsModule,
         RouterModule.forRoot(AppRoutes),
-        HttpModule,
+        HttpClientModule,
         MaterialModule,
         MatNativeDateModule
     ],
@@ -113,9 +115,14 @@ export class MaterialModule {}
         NavbarComponent,
         FooterComponent,
         FixedpluginComponent,
-        UserComponent
+        UserComponent,
+        PageNotFoundComponent
     ],
-    providers:[ActiveUserService,TestService],
+    providers:[HTTPStatus,{
+      provide:HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },GlobalService],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

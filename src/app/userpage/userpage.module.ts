@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserPageComponent } from './userpage.component';
 import { UserRoutes } from './userpage.routing';
+import { UserAuthGuard } from 'app/shared/auth/userAuth.guard';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { UserRoutes } from './userpage.routing';
         RouterModule.forChild(UserRoutes),
         FormsModule
     ],
-    declarations: [UserPageComponent]
+    declarations: [UserPageComponent],
+    providers:[UserAuthGuard]
 })
 
 export class UserPageModule {}

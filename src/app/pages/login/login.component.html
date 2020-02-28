@@ -7,7 +7,8 @@
         <form #userlogin = "ngForm" (ngSubmit) = "database(userlogin.value)" class="form" method="" action="">
           <div class="box" style="background:rgba(14, 13, 13, 0.651); border-radius: 20px; box-shadow: 0 15px 30px rgba(44, 44, 44, 0.699)">
             <div class="text text-center text-header-green background:red">
-              <h2 class="card-title" style="font-style: inherit; color: #fff">log in</h2>
+              
+              <h2 class="card-title" style="font-style: inherit; color: #fff"> <i class="material-icons">fingerprint</i> LOGIN</h2>
             </div>
             <div class="card-body ">
               <span class="bmd-form-group">
@@ -17,7 +18,7 @@
                        <i class="material-icons" style="color: #fff">face</i>
                     </span>
                   </div>                
-                  <input name="name" type="text" style="color: white" class="form-control" placeholder="nom d'utilisateur ou pseudo" ngModel>
+                  <input name="name" type="text" style="color: white" class="form-control" placeholder="nom d'utilisateur" ngModel>
                 </div>
               </span>
               <span class="bmd-form-group">
@@ -29,12 +30,12 @@
                   </div>
                   <input name="password" type="password" style="color: white" class="form-control" placeholder="mot de passe" ngModel>
                 </div>
-                <div class="text" style="text-align: right">
+            <!-- <div class="text" style="text-align: right">
                     <div class="stats">
                       <i class="material-icons text-danger" style="font-size: xx-small">warning</i>
                       <a href="#pablo" style="font-size: x-small; color: wheat">mot de passe oublié</a>
                     </div>
-                  </div>                
+                  </div>  -->              
               </span>
             </div>
             <div class="text" style="text-align: center">
@@ -55,21 +56,6 @@
             <li>
               <a href="https://www.test.pse-consulting.com/">
                 PSE-Consulting
-              </a>
-            </li>
-            <li>
-              <a href="https://www.test.pse-consulting.com/">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="https://www.test.pse-consulting.com/">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a href="https://www.test.pse-consulting.com/">
-                Licenses
               </a>
             </li>
           </ul>

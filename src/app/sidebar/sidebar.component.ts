@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import PerfectScrollbar from 'perfect-scrollbar';
+import { GlobalService } from 'app/shared/global.service';
 
 declare const $: any;
 
@@ -45,9 +46,29 @@ export const ROUTES: RouteInfo[] = [{
 @Component({
     selector: 'app-sidebar-cmp',
     templateUrl: 'sidebar.component.html',
+    styleUrls: ['./sidebar.component.css'],
+    providers:[GlobalService]
 })
 
 export class SidebarComponent implements OnInit {
+
+    constructor(private data2: GlobalService){
+
+    }
+
+    onClick(){
+        this.data2.deleteTokenFromLocalStorage();
+        this.data2.deleteUserIdFromLocalStorage();
+    }
+
+
+
+
+
+
+
+
+
     public menuItems: any[];
 
     isMobileMenu() {

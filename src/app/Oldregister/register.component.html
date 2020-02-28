@@ -1,0 +1,157 @@
+
+<div class="wrapper wrapper-full-page">
+   <div class="page-header register-page header-filter" filter-color="black" style="background-image: url('../../assets/img/register.jpg'); background-size: cover; background-position: top center;">
+    <div class="container">
+      <form #userInfo = "ngForm" (ngSubmit) = "onClick(userInfo.value)" class="form" method="" action="">
+      <div class="col-lg-8  col-md-6 col-sm-6 ml-auto mr-auto">
+        <div class="box" style="background:rgba(10, 10, 10, 0.301)">
+          <div class="text text-center" >
+              <h3 style="font-style: italic; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ; font-size: 40px; color: rgb(252, 252, 252)">créer un compte HourPoint</h3>
+          </div>
+          <div class="text-left">
+            <div class="row" >
+                <div class="col-md-5">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">nom utilisateur</label>
+                        <input name="nomUtilisateur" type="text" class="form-control" style="color: rgba(255, 255, 255, 0.884)" #userName="ngModel" ngModel required>
+                    </div>
+                    <div *ngIf="!userName.valid && userName.dirty==true">
+                      <label style="color: rgba(253, 70, 70, 0.884)">Champ vide</label>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Profil</label><br/>
+                        <input name="profil" type="radio" value="admin"  style="color: rgba(255, 255, 255, 0.884)" ngModel required>Admin
+                        <input name="profil" type="radio" value="user"  style="color: rgba(255, 255, 255, 0.884)" ngModel required>User
+                    </div>
+                </div>
+            </div>
+            <div class="row" >
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label class="bmd-label-floating">nom</label>
+                    <input name="nom" type="text" class="form-control" style="color: rgba(255, 255, 255, 0.884)" #name="ngModel" ngModel required>
+                </div>
+                <div *ngIf="!name.valid && name.dirty==true">
+                  <label style="color: rgba(253, 70, 70, 0.884)">Champ vide</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">prénom</label>
+                  <input name="prenom" type="text" class="form-control" style="color: rgba(255, 255, 255, 0.884)" #secondName="ngModel" ngModel required>
+                </div>
+                <div *ngIf="!secondName.valid && secondName.dirty==true">
+                  <label style="color: rgba(253, 70, 70, 0.884)">Champ vide</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label class="bmd-label-floating">adresse email</label>
+                  <input name="adresse" type="text" class="form-control" style="color: rgba(255, 255, 255, 0.884)" #email="ngModel" ngModel [pattern]="emailRegex" required>
+                </div>
+                <div *ngIf="email.errors">
+                  <label *ngIf="email.errors.required && email.dirty==true" style="color: rgba(253, 70, 70, 0.884)">Champ vide</label>
+                  <label *ngIf="email.errors.pattern" style="color: rgba(253, 70, 70, 0.884)">Adresse mail invalide</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">numéro de téléphone</label>
+                  <input name="tel" type="number" class="form-control" style="color: rgba(255, 255, 255, 0.884)" #tel="ngModel" ngModel required>
+                </div>
+                <div *ngIf="!tel.valid && tel.dirty==true">
+                  <label style="color: rgba(253, 70, 70, 0.884)">Champ vide</label>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row">
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Heure d'arrivée</label>
+                  <select name="arrivee" style="color: rgba(255, 255, 255, 0.884)" class="form-control form-control-sm" ngModel>
+                    <option style="background-color: cadetblue" value="7:30">7:30</option>
+                    <option style="background-color: cadetblue" value="8:00">8:00</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Heure de départ</label>
+                  <select name="depart" style="color: rgba(255, 255, 255, 0.884)" class="form-control form-control-sm" ngModel>
+                    <option style="background-color: cadetblue" value="18:00">18:00</option>
+                    <option style="background-color: cadetblue" value="19:00">19:00</option>
+                  </select>
+                </div>
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label class="bmd-label-floating">mot de passe</label>
+                  <input name="mdp" type="password" class="form-control" style="color: rgba(255, 255, 255, 0.884)" #mdp="ngModel" ngModel minlength="8" required>
+                </div>
+                <div *ngIf="mdp.errors">
+                  <label *ngIf="mdp.errors.required && mdp.dirty==true" style="color: rgba(253, 70, 70, 0.884)">Champ vide</label>
+                  <label *ngIf="mdp.errors.minlength" style="color: rgba(253, 70, 70, 0.884)">Entrez aumoins 8 caractères</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">confirmez votre mot de passe</label>
+                  <input name="mdpConfirm" type="password" class="form-control" style="color: rgba(255, 255, 255, 0.884)" #mdpConfirm="ngModel" ngModel minlength="8" required>
+                </div>
+                <div *ngIf="mdpConfirm.errors">
+                  <label *ngIf="mdpConfirm.errors.required && mdpConfirm.dirty==true" style="color: rgba(253, 70, 70, 0.884)">Champ vide</label>
+                  <label *ngIf="mdpConfirm.errors.minlength" style="color: rgba(253, 70, 70, 0.884)">Entrez aumoins 8 caractères</label>
+                </div>
+              </div>
+              <div class="text" style="text-align: center">
+                <input routerLink="/registerImport" type="button"  class="btn btn-primary btn-round mt-4" value="créer compte par import">
+                <input type="submit" [disabled]="!userInfo.valid" value="créer mon compte" class="btn btn-primary btn-round mt-4">
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- <footer class="footer " >
+      <div class="container">
+        <nav class="pull-left">
+          <ul>
+            <li>
+              <a href="https://www.test.pse-consulting.com/">
+                    PSE-Consulting
+              </a>
+            </li>
+            <li>
+              <a href="https://www.test.pse-consulting.com/">
+                    About Us
+              </a>
+            </li>
+            <li>
+              <a href="https://www.test.pse-consulting.com/">
+                    Blog
+              </a>
+            </li>
+            <li>
+              <a href="https://www.test.pse-consulting.com/">
+                    Licenses
+              </a>
+            </li>
+          </ul>
+        </nav>
+          <div class="copyright pull-right">
+            &copy;
+              {{year | date: 'yyyy'}}, made with <i class="material-icons">favorite</i> by
+            <a href="https://www.test.pse-consulting.com/" target="_blank">PSE-Consulting</a> for a better Managment.
+          </div>
+      </div>
+    </footer>-->
+  </div>
+</div>
+  

@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserPageConsultComponent } from './userpageconsult.component';
 import { UserRoutes } from './userpageconsult.routing';
+import { GlobalService } from 'app/shared/global.service';
+import { UserAuthGuard } from 'app/shared/auth/userAuth.guard';
 
 @NgModule({
     imports: [
@@ -12,7 +14,8 @@ import { UserRoutes } from './userpageconsult.routing';
         RouterModule.forChild(UserRoutes),
         FormsModule
     ],
-    declarations: [UserPageConsultComponent]
+    declarations: [UserPageConsultComponent],
+    providers: [GlobalService,UserAuthGuard]
 })
 
 export class UserPageConsultModule {}

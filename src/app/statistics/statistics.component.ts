@@ -3,21 +3,33 @@ import { TableData } from '../md/md-table/md-table.component';
 import { LegendItem, ChartType } from '../md/md-chart/md-chart.component';
 
 import * as Chartist from 'chartist';
-import { ActiveUserService } from 'app/shared/activeUser.service';
-import { DatabaseService } from 'app/shared/database.service';
 import { ProviderAst } from '@angular/compiler';
+import { GlobalService } from 'app/shared/global.service';
 
 declare const $: any;
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboardUser.component.html',
-  providers:[ActiveUserService,DatabaseService]
+  templateUrl: './statistics.component.html',
+  styleUrls: ['./statistics.component.css'],
+  providers:[]
 })
-export class DashboardUserComponent implements OnInit, AfterViewInit {
+export class StatisticsComponent implements OnInit, AfterViewInit {
   // constructor(private navbarTitleService: NavbarTitleService, private notificationService: NotificationService) { }
-  constructor(private activeUser:ActiveUserService,private data:DatabaseService){}
-  
+  constructor(private data2:GlobalService){}
+
+  private user;
+  private tabx;
+  private tabxMonth;
+  private tabWeekHours;
+  private tabMonthHours;
+  private bool1=false;
+  private bool2=false;
+
+
+
+
+
   public tableData: TableData;
   startAnimationForLineChart(chart: any) {
       let seq: any, delays: any, durations: any;
@@ -75,7 +87,90 @@ export class DashboardUserComponent implements OnInit, AfterViewInit {
       seq2 = 0;
   }
   // constructor(private navbarTitleService: NavbarTitleService) { }
-  public ngOnInit() {
+
+
+
+
+  subscribeToPromise(){
+
+    this.data2.getAllWeekHoursInfo(this.selectedDay2,this.selectedMonth2+1,this.selectedYear2).subscribe(
+      res => {
+          console.log('IN STATISTICS RES')
+          this.bool2=false
+          this.tabWeekHours=res;
+
+          for(let i=0;i<this.tabWeekHours.length;i++){
+            if(this.tabWeekHours[i].length > 1){
+              this.bool2=true;
+            }
+          }
+          
+          this.tabx=this.data2.statWeek(this.tabWeekHours);
+          console.log('tablex',this.tabx)
+
+          this.val2 = false;
+      },
+      err => {
+        console.log(err);
+    }
+    )
+
+    this.data2.getAllMonthHoursInfo(this.selectedMonth+1,this.selectedYear).subscribe(
+      res => {
+          this.bool1=false
+          this.tabMonthHours=res;
+
+          for(let i=0;i<this.tabMonthHours.length;i++){
+            if(this.tabMonthHours[i].length > 1){
+              this.bool1=true;
+            }
+          }
+          this.tabxMonth=this.data2.statMonth(this.tabMonthHours);
+          console.log("TABXMONTH",this.tabxMonth);
+
+          this.val = false;
+      },
+      err => {
+        console.log(err);
+    }
+    )
+
+
+  }
+
+
+    public ngOnInit() {
+
+      
+      console.log("\n\nCHOSEN MONTH ",this.selectedMonth+1);
+      console.log("CHOSEN YEAR ",this.selectedYear);
+
+      /*this.data2.getInfoById(this.data2.getUserIdFromLocalStorage()).subscribe(
+        res => {
+            console.log(res);
+            this.user = res;
+        },
+        err => {
+            console.log("userpageconsult error\n",err);
+        }
+    )*/
+
+        this.subscribeToPromise();
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       this.tableData = {
           headerRow: ['ID', 'Name', 'Salary', 'Country', 'City'],
           dataRows: [
@@ -218,4 +313,165 @@ export class DashboardUserComponent implements OnInit, AfterViewInit {
            });
        }
    }
+
+/****************************************************************************************************************/
+date_picker_element= document.querySelector('.date-picker')
+selected_date_element= document.querySelector('.date-picker .selected-date')
+dates_element= document.querySelector('.date-picker .dates')
+year_element= document.querySelector('.date-picker .dates .year .yr')
+next_yr_element= document.querySelector('.date-picker .dates .year .next-yr')
+prev_yr_element= document.querySelector('.date-picker .dates .year .prev-yr')
+    
+months_element= document.querySelector('.date-picker .dates .months')
+    
+months= ['Jan','Fev','Mar','Avr','Mai','Jun','Jul','Aou','Sept','Oct','Nov','Dec']
+    
+date= new Date()
+month= this.date.getMonth()
+year= this.date.getFullYear()
+    
+selectedDate= this.date
+selectedMonth= this.month
+selectedYear= this.year
+val=false
+dateselect=this.formDate()
+
+ selectedDateFunc(i){
+
+    this.selectedDate= new Date(this.year+'-'+(i+1)+'-'+12)
+    this.selectedMonth=i
+    this.selectedYear=this.year
+
+    this.dateselect=this.formDate()
+
+    }
+
+
+    toggleDatePicker(){
+        if(this.val==false){
+            this.val=true
+        }else{
+            this.val=false
+        }
+    }
+    
+     goToNext(){
+        this.year++;
+    }
+    
+     goToPrev(){
+        this.year--;
+    }
+    
+     formDate(){
+  
+        console.log(this.selectedMonth,this.selectedYear)
+
+        this.subscribeToPromise();
+        return this.months[this.selectedMonth] + ' ' + this.selectedYear
+    }
+
+/****************************************************************************************************************/
+
+/****************************************************************************************************************/
+date_picker_element2= document.querySelector('.date-picker')
+selected_date_element2= document.querySelector('.date-picker .selected-date')
+dates_element2= document.querySelector('.date-picker .dates')
+year_element2= document.querySelector('.date-picker .dates .year .yr')
+next_yr_element2= document.querySelector('.date-picker .dates .year .next-yr')
+prev_yr_element2= document.querySelector('.date-picker .dates .year .prev-yr')
+    
+months_element2= document.querySelector('.date-picker .dates .months')
+    
+months2= ['Jan','Fev','Mar','Avr','Mai','Jun','Jul','Aou','Sept','Oct','Nov','Dec']
+days2=[]
+    
+date2= new Date()
+day2=this.date2.getDate()
+month2= this.date2.getMonth()
+year2= this.date2.getFullYear()
+    
+selectedDate2= this.date2
+selectedDay2= this.day2
+selectedMonth2= this.month2
+selectedYear2= this.year2
+val2=false
+dateselect2=this.formDate2()
+
+ selectedDateFunc2(i){
+
+    this.selectedDate2= new Date(this.year2+'-'+(this.month2+1)+'-'+(i+1))
+    this.selectedDay2=i+1
+    this.selectedMonth2=this.month2
+    this.selectedYear2=this.year2
+
+    this.dateselect2=this.formDate2()
+
+    }
+
+
+    toggleDatePicker2(){
+        if(this.val2==false){
+            this.val2=true
+        }else{
+            this.val2=false
+        }
+        this.populateDates();
+        console.log('DAYS',this.days2)
+    }
+    
+     goToNext2(){
+       console.log('SELECTED DAY',this.selectedDay2)
+        this.month2++;
+        if(this.month2>11){
+          this.month2=0;
+          this.year2++;
+        }
+        this.populateDates();
+    }
+    
+     goToPrev2(){
+        this.month2--;
+        if(this.month2<0){
+          this.month2=11;
+          this.year2--;
+        }
+        this.populateDates();
+    }
+
+    populateDates(){
+      this.days2=[]
+      var amountDays=31
+      if(this.month2==3||this.month2==5||this.month2==8||this.month2==10){
+        amountDays=30
+      }
+
+      if(this.month2==1){
+        if(this.year2%4==0){
+          amountDays=29
+        }else{
+          amountDays=28
+        }
+      }
+      for(let i=1; i<=amountDays; i++){
+        this.days2.push(i)
+      }
+
+    }
+    
+     formDate2(){
+        var selectedDay2=this.selectedDay2.toString()
+
+        this.subscribeToPromise();
+
+        console.log("selectedMonth2",this.selectedDay2,this.selectedMonth2)
+        if(this.selectedDay2<10){
+          selectedDay2='0'+this.selectedDay2
+        }
+
+        return selectedDay2 + ' ' + this.months2[this.selectedMonth2] + ' ' + this.selectedYear2
+    }
+
+/****************************************************************************************************************/
+
 }

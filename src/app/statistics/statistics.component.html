@@ -1,0 +1,111 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">      
+      <div class="col-md-12">
+          <div class="col-md-12">
+              <div class="card ">
+                <!--<div class="card-header ">
+                  <h2 class="card-title" style="text-align: right;font-size: 25px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ">BILAN HORAIRE {{user.userName.toUpperCase()}}</h2>
+                </div>-->
+                <div class="card-body ">
+                  <ul class="nav nav-pills nav-pills-warning" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist">
+                        Statistiques Hebdomadaire
+                      </a>
+                    </li>                    
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#link3" role="tablist">
+                        Statistiques Mensuel
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="tab-content tab-space">
+                    <div class="tab-pane active" id="link1">
+
+                    <div *ngIf="!bool2" class="card-body ">
+                      <p>AUCUNE DONNEE TROUVEE</p>
+                    </div> 
+                      <!---------------------------------------------------------------------------------------------------->
+                  <div class="date-picker" >
+                    <div class="selected-date" (click)="toggleDatePicker2()">{{dateselect2}}</div>
+                    <div class="dates" [class.active]="val2">
+                        <div class="month">
+                          <div class="arrows prev-mth" (click)="goToPrev2()"><i class="material-icons">keyboard_arrow_left</i></div>
+                          <div class="mth">{{this.months2[this.month2]+' '+this.year2}}</div>
+                          <div class="arrows next-mth" (click)="goToNext2()"><i class="material-icons">keyboard_arrow_right</i></div>
+                        </div>
+              
+                        <div class="days" >
+                        <div class="day" *ngFor='let day of days2;let i=index' (click)="selectedDateFunc2(i)" [ngClass]="{'selected': (selectedDay2-1==i) && (selectedYear2==year2) && (selectedMonth2==month2) }">{{day}}</div>
+                        </div>
+                    </div>
+                </div>
+                <!----------------------------------------------------------------------------------------------------->
+
+                      <table *ngIf="bool2" class="table table-hover" style="text-align: center; border: 1px solid black"> 
+                            <thead class="text" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">                
+                              <tr style="border: 1px solid black; border-bottom: 1px solid black">
+                                <th>nom</th>
+                                <th>heure normale</th>
+                                <th>heure effectuée</th>
+                                <th>heure noneffectuée</th>
+                                <th>heure sup</th>
+                              </tr>
+                            </thead>                  
+                              <tr *ngFor="let user of tabx">
+                                <td>{{user.nom}}</td>
+                                <td>{{user.heureNormale}}</td>
+                                <td>{{user.heureEffectue}}</td>
+                                <td>{{user.heureNonEffectue}}</td>
+                                <td>{{user.heureSup}}</td>                       
+                              </tr>
+                              
+                        </table>  
+                    </div>  
+                    <!-- here                   -->
+                    <div class="tab-pane" id="link3">
+
+                      <div *ngIf="!bool1" class="card-body ">
+                        <p>AUCUNE DONNEE TROUVEE</p>
+                      </div> 
+                <!---------------------------------------------------------------------------------------------------->
+                  <div class="date-picker" >
+                    <div class="selected-date" (click)="toggleDatePicker()">{{dateselect}}</div>
+                    <div class="dates" [class.active]="val">
+                        <div class="year">
+                          <div class="arrows prev-yr" (click)="goToPrev()"><i class="material-icons">keyboard_arrow_left</i></div>
+                          <div class="yr">{{year}}</div>
+                          <div class="arrows next-yr" (click)="goToNext()"><i class="material-icons">keyboard_arrow_right</i></div>
+                        </div>
+              
+                        <div class="months" >
+                        <div class="month" *ngFor='let mon of months;let i=index' (click)="selectedDateFunc(i)" [ngClass]="{'selected': (selectedYear==year) && (selectedMonth==i) }">{{mon}}</div>
+                        </div>
+                    </div>
+                </div>
+                <!----------------------------------------------------------------------------------------------------->
+                      
+                      <table *ngIf="bool1" class="table table-hover" style="text-align: center; border: 1px solid black"> 
+                        <thead class="text" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">                
+                          <tr style="border: 1px solid black; border-bottom: 1px solid black">
+                            <th>nom</th>
+                            <th>nombre d'absences</th>
+                          </tr>
+                        </thead>                  
+                          <tr *ngFor="let user of tabxMonth">
+                            <td>{{user.nom}}</td>   
+                            <td>{{user.absence}}</td>                                                  
+                          </tr>
+                          
+                    </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>                                  
+          </div>                                
+      </div>                    
+    </div>
+</div>
+

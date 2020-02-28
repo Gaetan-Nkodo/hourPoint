@@ -43,7 +43,7 @@
     }
 
     &[data-background-color="red"]{
-        background-color: #d30a07 !important;
+        background-color: #e53935;
     }
 
     .sidebar-wrapper{
@@ -227,7 +227,6 @@
         left: 0;
         background-size: cover;
         background-position: center center;
-      
 
         &:after{
             position: absolute;
@@ -375,7 +374,7 @@
         }
     }
     &[data-background-color="black"]{
-        @include sidebar-background-color($gray-base, $white-color);
+        @include sidebar-background-color(rgb(109, 172, 214), $white-color);
 
         .nav li .dropdown-menu .dropdown-item{
           color: $white-color;

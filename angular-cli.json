@@ -20,6 +20,7 @@
       "prefix": "app",
       "styles": [
         "../node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
+        "../node_modules/jquery-ui-dist/jquery-ui.css",
         "../node_modules/angular-calendar/scss/angular-calendar.scss",
           "../node_modules/sweetalert2/src/sweetalert2.scss",
           "./assets/css/demo.css",
@@ -50,7 +51,8 @@
         "../node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js",
         "../node_modules/jqvmap/dist/jquery.vmap.min.js",
         "../node_modules/jqvmap/dist/maps/jquery.vmap.world.js",
-        "../node_modules/jquery-validation/dist/jquery.validate.min.js"
+        "../node_modules/jquery-validation/dist/jquery.validate.min.js",
+        "../node_modules/jquery-ui-dist/jquery-ui.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

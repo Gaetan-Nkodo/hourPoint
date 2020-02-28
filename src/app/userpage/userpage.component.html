@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header card-header-icon card-header-rose">
-            <div class="card-icon">
+          <div class="card-header card-header-icon ">
+            <div class="card-icon" style="background-color: rgb(109, 172, 214);">
               <i class="material-icons">perm_identity</i>
             </div>
             <h4 class="card-title">Edit Profile -
@@ -42,8 +42,8 @@
                 </div>
               </div>
               <br>
-              <input type="button" value="Changer Mot de passe" (click)="onClick()">
-              <input *ngIf="annuler" type="button" class="btn btn-rose" value="Annuler" (click)="annuler=false;choice=false;i=0;valid=false">
+              <input type="button" value="Changer Mot de passe" style="cursor: pointer;" (click)="onClick()">
+              <input *ngIf="annuler" type="button" class="btn btn-rose" style="background-color: rgb(109, 172, 214);" value="Annuler" (click)="annuler=false;choice=false;i=0;valid=false;newMdp1=newMdp2=undefined">
                 <div *ngIf="choice" class="row">
                   <div class="col-md-4">
                     <div class="form-group">
@@ -67,7 +67,7 @@
                   </div>
               </div>
           </div>
-              <button mat-raised-button type="submit" class="btn btn-rose pull-right" (click)="newMdpTest()">Update Profile</button>
+              <button mat-raised-button type="submit" [disabled]="annuler&&((newMdp1==undefined||newMdp2==undefined)||(newMdp1==''||newMdp2=='')||(newMdp1.length<8||newMdp2.length<8))" style="background-color: rgb(109, 172, 214);" class="btn btn-rose pull-right" (click)="newMdpTest()">Update Profile</button>
               <div class="clearfix"></div>
             </form>
           </div>

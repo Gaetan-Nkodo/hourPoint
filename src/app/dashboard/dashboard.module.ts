@@ -7,7 +7,8 @@ import { MaterialModule } from '../app.module';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
-import { AuthGuard } from 'app/shared/auth.guard';
+import { AuthGuard } from 'app/shared/auth/auth.guard';
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
     imports: [
@@ -15,10 +16,11 @@ import { AuthGuard } from 'app/shared/auth.guard';
         RouterModule.forChild(DashboardRoutes),
         FormsModule,
         MdModule,
-        MaterialModule
+        MaterialModule,
+        HttpClientModule
     ],
     declarations: [DashboardComponent],
-    providers: [AuthGuard]
+    providers:[AuthGuard]
 })
 
 export class DashboardModule {}

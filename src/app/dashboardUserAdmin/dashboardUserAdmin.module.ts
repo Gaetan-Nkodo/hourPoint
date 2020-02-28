@@ -5,8 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MdModule } from '../md/md.module';
 import { MaterialModule } from '../app.module';
 
-import { DashboardUserComponent } from './dashboardUser.component';
+import { DashboardUserAdminComponent } from './dashboardUserAdmin.component';
 import { DashboardRoutes } from './dashboard.routing';
+import {NgxPaginationModule} from 'ngx-pagination'
+import { AuthGuard } from 'app/shared/auth/auth.guard';
 
 @NgModule({
     imports: [
@@ -14,9 +16,11 @@ import { DashboardRoutes } from './dashboard.routing';
         RouterModule.forChild(DashboardRoutes),
         FormsModule,
         MdModule,
-        MaterialModule
+        MaterialModule,
+        NgxPaginationModule
     ],
-    declarations: [DashboardUserComponent]
+    declarations: [DashboardUserAdminComponent],
+    providers:[AuthGuard]
 })
 
-export class DashboardUserModule {}
+export class DashboardUserAdminModule {}

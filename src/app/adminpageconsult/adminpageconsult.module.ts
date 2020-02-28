@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AdminPageConsultComponent } from './adminpageconsult.component';
 import { AdminRoutes } from './adminpageconsult.routing';
+import { AuthGuard } from 'app/shared/auth/auth.guard';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { AdminRoutes } from './adminpageconsult.routing';
         RouterModule.forChild(AdminRoutes),
         FormsModule
     ],
-    declarations: [AdminPageConsultComponent]
+    declarations: [AdminPageConsultComponent],
+    providers:[AuthGuard]
 })
 
 export class AdminPageConsultModule {}

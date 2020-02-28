@@ -1,0 +1,118 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">      
+      <div class="col-md-12">
+          <div class="col-md-12">
+              <div class="card ">
+                <div class="card-header ">
+                  <h2 class="card-title" style="text-align: right;font-size: 25px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ">BILAN HORAIRE {{user.userName.toUpperCase()}}</h2>
+                </div>
+                <div class="card-body ">
+                  <ul class="nav nav-pills nav-pills-warning" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist">
+                        Bilan Hebdomadaire
+                      </a>
+                    </li>                    
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#link3" role="tablist">
+                        Bilan Mensuel
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="tab-content tab-space">
+                    <div class="tab-pane active" id="link1">
+
+                      <div *ngIf="tab.length==0" class="card-body ">
+                        <p>AUCUNE DONNEE TROUVEE</p>
+                      </div> 
+
+                      <table *ngIf="tab.length!=0" class="table table-hover" style="text-align: center; border: 1px solid black"> 
+                            <thead class="text" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">                
+                              <tr style="border: 1px solid black; border-bottom: 1px solid black">
+                                <th>date</th>
+                                <th>heure arrivée</th>
+                                <th>extra</th>
+                                <th>heure départ</th>
+                                <th>extra</th>
+                                <th>extra final</th>
+                              </tr>
+                            </thead>                  
+                              <tr *ngFor="let user of tab">
+                                <td>{{user.date}}</td>
+                                <td>{{user.clockIn}}</td>
+                                <td [ngClass]="{'sign': user.extraMorningSign==0 }">{{user.extraMorning}}</td>
+                                <td>{{user.clockOut}}</td>
+                                <td [ngClass]="{'sign': user.extraAfternoonSign==0 }">{{user.extraAfternoon}}</td>   
+                                <td [ngClass]="{'sign': user.extraFinalSign==0 }">{{user.extraFinal}}</td>                           
+                              </tr>
+                              
+                        </table>
+                    <!-- <div class="text" style="text-align: center">
+                      <a [routerLink]="['/dashboard']" class="btn btn-primary btn-round mt-4" style="background-color: rgba(49, 49, 48, 0.918)">enregistrer</a>
+                    </div> -->
+                    <div *ngIf="tab.length!=0">Nombre d'heure sup total= {{totalExtraTotal}}</div>
+                    </div>  
+                    <!-- here                   -->
+                    <div class="tab-pane" id="link3"> 
+                      
+                      <div *ngIf="tab2.length==0" class="card-body ">
+                        <p>AUCUNE DONNEE TROUVEE</p>
+                      </div> 
+                      
+                  <!---------------------------------------------------------------------------------------------------->
+                  <div class="date-picker" >
+                    <div class="selected-date" (click)="toggleDatePicker()">{{dateselect}}</div>
+                    <div class="dates" [class.active]="val">
+                        <div class="year">
+                          <div class="arrows prev-yr" (click)="goToPrev()"><i class="material-icons">keyboard_arrow_left</i></div>
+                          <div class="yr">{{year}}</div>
+                          <div class="arrows next-yr" (click)="goToNext()"><i class="material-icons">keyboard_arrow_right</i></div>
+                        </div>
+              
+                        <div class="months" >
+                        <div class="month" *ngFor='let mon of months;let i=index' (click)="selectedDateFunc(i)" [ngClass]="{'selected': (selectedYear==year) && (selectedMonth==i) }">{{mon}}</div>
+                        </div>
+                    </div>
+                </div>
+                <!----------------------------------------------------------------------------------------------------->
+
+                      <table *ngIf="tab2.length!=0" class="table table-hover" style="text-align: center; border: 1px solid black"> 
+                        <thead class="text" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">                
+                          <tr style="border: 1px solid black; border-bottom: 1px solid black">
+                            <th>date</th>
+                            <th>heure arrivée</th>
+                            <th>extra</th>
+                            <th>heure départ</th>
+                            <th>extra2</th>
+                            <th>extra final</th>
+                          </tr>
+                        </thead>                  
+                          <tr *ngFor="let user of tab2 | paginate: {itemsPerPage:5, currentPage:p}">
+                            <td>{{user.date}}</td>
+                            <td>{{user.clockIn}}</td>
+                            <td [ngClass]="{'sign': user.extraMorningSign==0 }">{{user.extraMorning}}</td>
+                            <td>{{user.clockOut}}</td>
+                            <td [ngClass]="{'sign': user.extraAfternoonSign==0 }">{{user.extraAfternoon}}</td>   
+                            <td [ngClass]="{'sign': user.extraFinalSign==0 }">{{user.extraFinal}}</td>                           
+                          </tr>
+                          
+                    </table>
+                    <pagination-controls *ngIf="tab2.length!=0" (pageChange)=" p=$event"></pagination-controls>
+                <!-- <div class="text" style="text-align: center">
+                  <a [routerLink]="['/dashboard']" class="btn btn-primary btn-round mt-4" style="background-color: rgba(49, 49, 48, 0.918)">enregistrer</a>
+                </div> -->
+                 <div *ngIf="tab2.length!=0">Nombre d'heure sup total= {{totalExtraTotal2}}</div>
+                <!-- <div class="text" style="text-align: center">
+                  <a [routerLink]="['/dashboard']" class="btn btn-primary btn-round mt-4" style="background-color: rgba(49, 49, 48, 0.918)">enregistrer</a>
+                </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>                                  
+          </div>                                 
+      </div>                  
+    </div>
+</div>
+
